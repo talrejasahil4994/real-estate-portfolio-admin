@@ -1,56 +1,124 @@
 # Real Estate Portfolio Admin
 
-A production-ready full-stack web application for real estate professionals to showcase their projects, manage clients, and handle inquiries.
+### 🌐 Live Links
+- **Frontend**: [https://real-estate-frontend-nvev.onrender.com](https://real-estate-frontend-nvev.onrender.com)
+- **Backend**: [https://real-estate-portfolio-admin.onrender.com](https://real-estate-portfolio-admin.onrender.com)
 
-## Features
+---
 
-- **Modern Landing Page**: Fully responsive with Hero, Why Choose Us, Our Projects, Happy Clients, Contact Form, and Newsletter.
-- **Admin Dashboard**: Protected by JWT authentication.
-- **CRUD Operations**: Manage Projects and Clients with image upload and automatic cropping (450x350).
-- **Lead Management**: View contact form submissions and newsletter subscribers.
-- **Tech Stack**: Node.js, Express, PostgreSQL (Sequelize), React, Vite, Tailwind CSS.
+## 📖 Project Overview
 
-## Setup Instructions
+A professional full-stack web application designed for real estate agencies to showcase properties, manage client testimonials, and track leads effectively.
 
-### Prerequisites
-- Node.js (v16+)
-- PostgreSQL database (e.g., Neon.tech)
+### 🎨 Frontend (React + Tailwind CSS)
+- **Tech Stack**: React 18, Vite, Tailwind CSS, Lucide Icons, React Router, Axios.
+- **Features**:
+  - Responsive Landing Page with smooth scrolling.
+  - Interactive "Our Projects" and "Happy Clients" sections.
+  - Fully featured Admin Dashboard with secure login.
+  - CRUD operations for projects and clients.
+  - Lead management tables for contacts and newsletter subscribers.
 
-### Backend Setup
-1. Navigate to `backend/`
-2. Run `npm install`
-3. Create a `.env` file based on `.env.example`:
-   ```env
-   PORT=5000
-   DB_URI=your_postgresql_uri
-   JWT_SECRET=your_secret
-   ADMIN_EMAIL=admin@example.com
-   ADMIN_PASSWORD=admin123
-   CORS_ORIGIN=http://localhost:5173
-   ```
-4. Run `npm run dev` to start the server on port 5000.
+### ⚙️ Backend (Node.js + Express + Sequelize)
+- **Tech Stack**: Node.js, Express, PostgreSQL (Neon), Sequelize ORM, JWT, Multer, Sharp.
+- **Features**:
+  - Secure REST API with JWT authentication.
+  - Image processing and automatic cropping (450x350) for uniform display.
+  - Error handling and robust validation using Zod.
+  - Optimized for production with CORS and Security Best Practices.
 
-### Frontend Setup
-1. Navigate to `frontend/`
-2. Run `npm install`
-3. Run `npm run dev` to start the development server on port 5173.
+---
 
-## Deployment Steps
+## 📸 Portfolio Snapshots
 
-### Backend (Render)
-1. Push the code to a GitHub repository.
-2. Create a new **Web Service** on Render.
-3. Select the repository and set the **Root Directory** to `backend`.
-4. Build Command: `npm install`
-5. Start Command: `node src/server.js`
-6. Add all environment variables from `.env` to the Render dashboard.
+### Public Landing Page
+| Home Section | Our Projects |
+| :---: | :---: |
+| ![Home](SnapShots/Home.png) | ![Project](SnapShots/Project.png) |
 
-### Frontend (Vercel)
-1. Create a new project on Vercel.
-2. Select the repository and set the **Root Directory** to `frontend`.
-3. Framework Preset: **Vite**.
-4. Set the `VITE_API_BASE_URL` environment variable to your Render backend URL (e.g., `https://your-app.onrender.com/api`).
-5. Deploy.
+| Happy Clients | Footer Section |
+| :---: | :---: |
+| ![Client](SnapShots/Client.png) | ![Footer](SnapShots/Footer.png) |
 
-## Notes
-- Image uploads are stored locally in the `backend/uploads` directory. For production (Render), consider using a cloud storage provider like Cloudinary, as Render's file system is ephemeral unless you use a Disk.
+### Admin Dashboard
+| Admin Projects | Admin Clients |
+| :---: | :---: |
+| ![AdminProject](SnapShots/AdminProject.png) | ![AdminClient](SnapShots/AdminClient.png) |
+
+| Admin Subscribers | Admin Contact Inquiries |
+| :---: | :---: |
+| ![AdminSub](SnapShots/AdminSub.png) | ![AdminContact](SnapShots/AdminContact.png) |
+
+---
+
+## 🗄️ Database Schema
+
+The application uses a PostgreSQL database with the following structure:
+
+```mermaid
+erDiagram
+    PROJECTS {
+        uuid id PK
+        string name
+        string description
+        string imageUrl
+        timestamp createdAt
+    }
+    CLIENTS {
+        uuid id PK
+        string name
+        string designation
+        string description
+        string imageUrl
+        timestamp createdAt
+    }
+    CONTACTS {
+        uuid id PK
+        string fullName
+        string email
+        string mobile
+        string city
+        timestamp createdAt
+    }
+    SUBSCRIBERS {
+        uuid id PK
+        string email
+        timestamp createdAt
+    }
+```
+
+---
+
+## 🚀 Manual Deployment Guide (Render)
+
+### 1. Backend (Web Service)
+1. **GitHub Repository**: Connect your repo.
+2. **Root Directory**: `backend`
+3. **Build Command**: `npm install`
+4. **Start Command**: `npm start`
+5. **Environment Variables**:
+   - `DB_URI`: (Your Neon Connection String)
+   - `PORT`: `10000`
+   - `JWT_SECRET`: (Random string)
+   - `ADMIN_EMAIL`: `admin@example.com`
+   - `ADMIN_PASSWORD`: `admin123`
+   - `CORS_ORIGIN`: `https://real-estate-frontend-nvev.onrender.com`
+
+### 2. Frontend (Static Site)
+1. **GitHub Repository**: Connect your repo.
+2. **Root Directory**: `frontend`
+3. **Build Command**: `npm install && npm run build`
+4. **Publish Directory**: `dist`
+5. **Environment Variables**:
+   - `VITE_API_BASE_URL`: `https://real-estate-portfolio-admin.onrender.com`
+6. **Redirects**: Add a Rewrite rule: `/*` -> `/index.html` (Action: Rewrite).
+
+---
+
+## 🛠️ Local Setup
+1. Clone the repository.
+2. **Backend**: `cd backend && npm install && npm run dev`
+3. **Frontend**: `cd frontend && npm install && npm run dev`
+
+---
+© 2024 Real Estate Portfolio Admin. All rights reserved.

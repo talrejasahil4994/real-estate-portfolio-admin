@@ -1,12 +1,12 @@
-import React from 'react';
-import { Outlet, Navigate } from 'react-router-dom';
+import { Outlet, Navigate, useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 
 const AdminLayout = () => {
+    const navigate = useNavigate();
     const token = localStorage.getItem('adminToken');
 
     if (!token) {
-        return <Navigate to="/admin/login" replace />;
+        return <Navigate to="/" replace />;
     }
 
     return (
@@ -16,7 +16,7 @@ const AdminLayout = () => {
                 <header className="flex justify-between items-center mb-8">
                     <h1 className="text-3xl font-bold text-gray-800">Admin Dashboard</h1>
                     <button
-                        onClick={() => { localStorage.removeItem('adminToken'); window.location.href = '/admin/login'; }}
+                        onClick={() => { localStorage.removeItem('adminToken'); navigate('/'); }}
                         className="text-red-500 font-semibold hover:text-red-700"
                     >
                         Logout
