@@ -1,0 +1,42 @@
+-- Enable UUID extension
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- Projects Table
+CREATE TABLE "Projects" (
+  "id" UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  "imageUrl" VARCHAR(255) NOT NULL,
+  "name" VARCHAR(255) NOT NULL,
+  "description" TEXT NOT NULL,
+  "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Clients Table (Testimonials)
+CREATE TABLE "Clients" (
+  "id" UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  "imageUrl" VARCHAR(255) NOT NULL,
+  "name" VARCHAR(255) NOT NULL,
+  "description" TEXT NOT NULL,
+  "designation" VARCHAR(255) NOT NULL,
+  "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Contact Inquiries Table
+CREATE TABLE "Contacts" (
+  "id" UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  "fullName" VARCHAR(255) NOT NULL,
+  "email" VARCHAR(255) NOT NULL,
+  "mobile" VARCHAR(255) NOT NULL,
+  "city" VARCHAR(255) NOT NULL,
+  "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Newsletter Subscribers Table
+CREATE TABLE "Subscribers" (
+  "id" UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  "email" VARCHAR(255) NOT NULL UNIQUE,
+  "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
