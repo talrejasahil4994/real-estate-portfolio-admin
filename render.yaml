@@ -22,17 +22,12 @@ services:
         value: admin123
       - key: CORS_ORIGIN
         value: '*' # Update this to your frontend URL after frontend is deployed
-    disk:
-      name: uploads
-      mountPath: /opt/render/project/src/uploads
-      sizeGB: 1
 
   # Frontend service
   - type: web
     name: real-estate-frontend
     runtime: static
     plan: free
-    region: ohio
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     envVars:
