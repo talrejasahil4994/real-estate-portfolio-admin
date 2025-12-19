@@ -121,4 +121,4 @@ erDiagram
 3. **Frontend**: `cd frontend && npm install && npm run dev`
 
 ---
-© 2024 Real Estate Portfolio Admin. All rights reserved.
+© 2025 Real Estate Portfolio Admin. All rights reserved.
