@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axiosClient from '../../api/axiosClient';
+import axiosClient, { getImageUrl } from '../../api/axiosClient';
 
 const OurProjectsSection = () => {
     const [projects, setProjects] = useState([]);
@@ -32,7 +32,7 @@ const OurProjectsSection = () => {
                     <div key={project.id} className="group overflow-hidden rounded-xl shadow-lg bg-white">
                         <div className="relative overflow-hidden h-64">
                             <img
-                                src={project.imageUrl}
+                                src={getImageUrl(project.imageUrl)}
                                 alt={project.name}
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             />

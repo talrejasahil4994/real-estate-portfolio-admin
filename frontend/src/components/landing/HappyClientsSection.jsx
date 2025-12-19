@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axiosClient from '../../api/axiosClient';
+import axiosClient, { getImageUrl } from '../../api/axiosClient';
 
 const HappyClientsSection = () => {
     const [clients, setClients] = useState([]);
@@ -31,7 +31,7 @@ const HappyClientsSection = () => {
                 {clients.map((client) => (
                     <div key={client.id} className="bg-white p-8 rounded-xl shadow-lg max-w-sm flex flex-col items-center text-center">
                         <div className="w-20 h-20 rounded-full overflow-hidden mb-6 border-4 border-primary">
-                            <img src={client.imageUrl} alt={client.name} className="w-full h-full object-cover" />
+                            <img src={getImageUrl(client.imageUrl)} alt={client.name} className="w-full h-full object-cover" />
                         </div>
                         <p className="text-gray-600 italic mb-6">"{client.description}"</p>
                         <h4 className="font-bold text-gray-800">{client.name}</h4>

@@ -1,0 +1,45 @@
+services:
+  # Backend service
+  - type: web
+    name: real-estate-backend
+    runtime: node
+    plan: free
+    region: ohio
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production
+      - key: DB_URI
+        sync: false # User will need to provide their Neon DB URI
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: admin@example.com
+      - key: ADMIN_PASSWORD
+        value: admin123
+      - key: CORS_ORIGIN
+        value: '*' # Update this to your frontend URL after frontend is deployed
+    disk:
+      name: uploads
+      mountPath: /opt/render/project/src/uploads
+      sizeGB: 1
+
+  # Frontend service
+  - type: web
+    name: real-estate-frontend
+    runtime: static
+    plan: free
+    region: ohio
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        fromService:
+          name: real-estate-backend
+          type: web
+          property: host
+        # Note: Render will prepend https:// automatically. 
+        # You may need to append /api manually in the Render dashboard if needed.

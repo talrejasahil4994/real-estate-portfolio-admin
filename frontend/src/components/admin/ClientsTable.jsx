@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axiosClient from '../../api/axiosClient';
+import axiosClient, { getImageUrl } from '../../api/axiosClient';
 import { toast } from 'react-hot-toast';
 import { Plus, Loader2, Edit, Trash2 } from 'lucide-react';
 
@@ -36,7 +36,7 @@ const ClientsTable = () => {
     const handleEdit = (client) => {
         setEditingClient(client);
         setShowForm(true);
-        setImagePreview(client.imageUrl);
+        setImagePreview(getImageUrl(client.imageUrl));
     };
 
     const handleDelete = async (id) => {
@@ -141,7 +141,7 @@ const ClientsTable = () => {
                         {clients.map((client) => (
                             <tr key={client.id} className="border-b hover:bg-gray-50">
                                 <td className="p-4">
-                                    <img src={client.imageUrl} className="w-12 h-12 object-cover rounded-full" alt="" />
+                                    <img src={getImageUrl(client.imageUrl)} className="w-12 h-12 object-cover rounded-full" alt="" />
                                 </td>
                                 <td className="p-4 font-medium">{client.name}</td>
                                 <td className="p-4">{client.designation}</td>
