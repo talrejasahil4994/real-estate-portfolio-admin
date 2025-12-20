@@ -10,6 +10,10 @@
 
 A professional full-stack web application designed for real estate agencies to showcase properties, manage client testimonials, and track leads effectively.
 
+Admin credentials 
+email - admin@example.com
+password - admin123
+
 ### 🎨 Frontend (React + Tailwind CSS)
 - **Tech Stack**: React 18, Vite, Tailwind CSS, Lucide Icons, React Router, Axios.
 - **Features**:
